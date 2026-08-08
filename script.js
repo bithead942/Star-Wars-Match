@@ -13,6 +13,7 @@ const difficultyGroup = document.getElementById('difficultyGroup');
 const themeGroup = document.getElementById('themeGroup');
 const resetBtn = document.getElementById('resetBtn');
 const closeBtn = document.getElementById('closeBtn');
+const exitBtn = document.getElementById('exitBtn');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
 const LAYOUT = { easy: { cols: 4, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
@@ -273,6 +274,10 @@ resetBtn.addEventListener('click', () => {
 });
 
 closeBtn.addEventListener('click', () => closeSettings(true));
+
+exitBtn.addEventListener('click', () => {
+  window.close();
+});
 
 difficultyGroup.addEventListener('click', (e) => {
   if (e.target.classList.contains('option')) {

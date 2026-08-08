@@ -320,13 +320,19 @@ button {
 
 #playAgainBtn,
 #resetBtn,
-#closeBtn {
+#closeBtn,
+#exitBtn {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+#exitBtn {
+  background: #757575;
+  color: #ffffff;
 }
 
 #playAgainBtn {
