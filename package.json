@@ -4,7 +4,22 @@
   "description": "Star Wars Match - a full screen touch memory game for Windows 11",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.example.star-wars-match",
+    "productName": "Star Wars Match",
+    "win": {
+      "target": "portable"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      "main.js",
+      "LICENSE"
+    ]
   },
   "keywords": [
     "star-wars",
@@ -15,6 +30,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^31.0.0"
+    "electron": "^31.0.0",
+    "electron-builder": "^25.0.0"
   }
 }
