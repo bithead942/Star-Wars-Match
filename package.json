@@ -18,7 +18,8 @@
       "style.css",
       "script.js",
       "main.js",
-      "LICENSE"
+      "LICENSE",
+      "img/**/*"
     ]
   },
   "keywords": [

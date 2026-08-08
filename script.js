@@ -22,7 +22,22 @@ const COUNTS = { easy: 6, medium: 10, hard: 14 };
 const LAYOUT = { easy: { cols: 4, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const THEMES = ['light', 'dark'];
-const SHAPES = ['circle', 'square', 'triangle', 'diamond', 'star', 'cross', 'lines'];
+const LIGHT_IMAGES = [
+  'bo-katan.jpg',
+  'CHEWBACCA.jpg',
+  'Finn.jpg',
+  'Grogu.jpg',
+  'Han solo.jpg',
+  'lando.jpg',
+  'Leia.jpg',
+  'Luke Skywalker.jpg',
+  'Mando and Grogu.jpg',
+  'obiwan.jpg',
+  'Poe and BB8.jpg',
+  'R2D2 C3P0.jpg',
+  'REY.jpg',
+  'Wicket.jpg'
+];
 
 const settings = { difficulty: 'medium', theme: 'light' };
 let pending = { ...settings };
@@ -114,10 +129,10 @@ function shuffle(array) {
   return a;
 }
 
-function createCard(shape, index) {
+function createCard(item, index) {
   const card = document.createElement('div');
   card.className = 'card';
-  card.dataset.shape = shape;
+  card.dataset.shape = item.id;
   card.dataset.index = index;
   card.setAttribute('role', 'listitem');
 
@@ -126,15 +141,12 @@ function createCard(shape, index) {
 
   const front = document.createElement('div');
   front.className = 'card-face card-front';
-  const shapeEl = document.createElement('div');
-  shapeEl.className = `shape ${shape}`;
-  if (shape === 'lines') {
-    for (let i = 0; i < 4; i += 1) {
-      const line = document.createElement('span');
-      shapeEl.appendChild(line);
-    }
-  }
-  front.appendChild(shapeEl);
+  const img = document.createElement('img');
+  img.className = 'card-image';
+  img.src = item.src;
+  img.alt = item.id;
+  img.draggable = false;
+  front.appendChild(img);
 
   const back = document.createElement('div');
   back.className = 'card-face card-back';
@@ -216,11 +228,12 @@ function resetGame() {
   lock = false;
 
   const count = COUNTS[settings.difficulty];
-  const unique = SHAPES.slice(0, count / 2);
-  const pairs = [...unique, ...unique];
+  const faceImages = shuffle(LIGHT_IMAGES).slice(0, count / 2);
+  const faceCards = faceImages.map((name) => ({ id: name, src: encodeURI(`img/Light/${name}`) }));
+  const pairs = [...faceCards, ...faceCards];
   deck = shuffle(pairs);
-  deck.forEach((shape, index) => {
-    board.appendChild(createCard(shape, index));
+  deck.forEach((item, index) => {
+    board.appendChild(createCard(item, index));
   });
 
   startOverlay.classList.remove('hidden');
