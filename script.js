@@ -14,6 +14,9 @@ const themeGroup = document.getElementById('themeGroup');
 const resetBtn = document.getElementById('resetBtn');
 const closeBtn = document.getElementById('closeBtn');
 const exitBtn = document.getElementById('exitBtn');
+const startOverlay = document.getElementById('startOverlay');
+const startLight = document.getElementById('startLight');
+const startDark = document.getElementById('startDark');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
 const LAYOUT = { easy: { cols: 4, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
@@ -220,8 +223,7 @@ function resetGame() {
     board.appendChild(createCard(shape, index));
   });
 
-  applyTheme();
-  startTimer();
+  startOverlay.classList.remove('hidden');
 }
 
 function applyTheme() {
@@ -263,6 +265,15 @@ function updateSettingsUI() {
   });
 }
 
+function startGame(theme) {
+  settings.theme = theme;
+  pending.theme = theme;
+  applyTheme();
+  updateSettingsUI();
+  startOverlay.classList.add('hidden');
+  startTimer();
+}
+
 settingsBtn.addEventListener('click', openSettings);
 playAgainBtn.addEventListener('click', resetGame);
 
@@ -278,6 +289,9 @@ closeBtn.addEventListener('click', () => closeSettings(true));
 exitBtn.addEventListener('click', () => {
   window.close();
 });
+
+startLight.addEventListener('click', () => startGame('light'));
+startDark.addEventListener('click', () => startGame('dark'));
 
 difficultyGroup.addEventListener('click', (e) => {
   if (e.target.classList.contains('option')) {

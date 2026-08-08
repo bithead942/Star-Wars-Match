@@ -335,6 +335,42 @@ button {
   color: #ffffff;
 }
 
+#startOverlay {
+  z-index: 101;
+}
+
+.start-card {
+  min-width: 360px;
+}
+
+.start-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.start-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--panel-border);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#startLight {
+  background: #ffffff;
+  color: #212121;
+}
+
+#startDark {
+  background: #000000;
+  color: #ffffff;
+}
+
 #playAgainBtn {
   background: var(--option-active);
   color: var(--option-active-text);
