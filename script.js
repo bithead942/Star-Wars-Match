@@ -15,6 +15,7 @@ const resetBtn = document.getElementById('resetBtn');
 const closeBtn = document.getElementById('closeBtn');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
+const LAYOUT = { easy: { cols: 4, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const THEMES = ['light', 'dark'];
 const SHAPES = ['circle', 'square', 'triangle', 'diamond', 'star', 'cross', 'lines'];
@@ -199,6 +200,11 @@ function resetGame() {
   winOverlay.classList.add('hidden');
   stopTimer();
   board.innerHTML = '';
+
+  const { cols, rows } = LAYOUT[settings.difficulty];
+  board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
   matched = 0;
   rounds = 0;
   elapsed = 0;
