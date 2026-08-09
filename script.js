@@ -10,7 +10,6 @@ const playAgainBtn = document.getElementById('playAgainBtn');
 const settingsBtn = document.getElementById('settingsBtn');
 const settingsOverlay = document.getElementById('settingsOverlay');
 const difficultyGroup = document.getElementById('difficultyGroup');
-const themeGroup = document.getElementById('themeGroup');
 const resetBtn = document.getElementById('resetBtn');
 const closeBtn = document.getElementById('closeBtn');
 const exitBtn = document.getElementById('exitBtn');
@@ -21,7 +20,6 @@ const startDark = document.getElementById('startDark');
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
 const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
-const THEMES = ['light', 'dark'];
 const LIGHT_IMAGES = [
   'bo-katan.jpg',
   'CHEWBACCA.jpg',
@@ -276,7 +274,7 @@ function openSettings() {
 function closeSettings(save) {
   settingsOverlay.classList.add('hidden');
   if (save) {
-    const changed = pending.difficulty !== settings.difficulty || pending.theme !== settings.theme;
+    const changed = pending.difficulty !== settings.difficulty;
     Object.assign(settings, pending);
     if (changed) {
       resetGame();
@@ -293,10 +291,6 @@ function updateSettingsUI() {
   DIFFICULTIES.forEach((d) => {
     const btn = difficultyGroup.querySelector(`[data-value="${d}"]`);
     btn.classList.toggle('active', d === pending.difficulty);
-  });
-  THEMES.forEach((t) => {
-    const btn = themeGroup.querySelector(`[data-value="${t}"]`);
-    btn.classList.toggle('active', t === pending.theme);
   });
 }
 
@@ -332,13 +326,6 @@ startDark.addEventListener('click', () => startGame('dark'));
 difficultyGroup.addEventListener('click', (e) => {
   if (e.target.classList.contains('option')) {
     pending.difficulty = e.target.dataset.value;
-    updateSettingsUI();
-  }
-});
-
-themeGroup.addEventListener('click', (e) => {
-  if (e.target.classList.contains('option')) {
-    pending.theme = e.target.dataset.value;
     updateSettingsUI();
   }
 });
