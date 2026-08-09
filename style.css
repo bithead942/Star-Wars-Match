@@ -364,6 +364,10 @@ button {
   z-index: 101;
 }
 
+#settingsOverlay {
+  z-index: 102;
+}
+
 .start-card {
   min-width: 540px;
   padding: 3rem;
