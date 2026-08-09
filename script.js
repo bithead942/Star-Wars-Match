@@ -11,7 +11,6 @@ const settingsBtn = document.getElementById('settingsBtn');
 const settingsOverlay = document.getElementById('settingsOverlay');
 const difficultyGroup = document.getElementById('difficultyGroup');
 const resetBtn = document.getElementById('resetBtn');
-const closeBtn = document.getElementById('closeBtn');
 const exitBtn = document.getElementById('exitBtn');
 const startOverlay = document.getElementById('startOverlay');
 const startLight = document.getElementById('startLight');
@@ -346,8 +345,6 @@ resetBtn.addEventListener('click', () => {
   paused = false;
   resetGame();
 });
-
-closeBtn.addEventListener('click', () => closeSettings(true));
 
 exitBtn.addEventListener('click', () => {
   window.close();
