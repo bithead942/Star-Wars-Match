@@ -177,8 +177,11 @@ main {
 }
 
 .card-back {
-  background: var(--card-back);
-  border: 2px solid var(--card-back);
+  background-color: #000;
+  background-image: url('img/Card%20Back.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card-image {
