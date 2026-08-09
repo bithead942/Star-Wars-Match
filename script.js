@@ -361,6 +361,12 @@ difficultyGroup.addEventListener('click', (e) => {
   }
 });
 
+settingsOverlay.addEventListener('click', (e) => {
+  if (e.target === settingsOverlay) {
+    closeSettings(false);
+  }
+});
+
 document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 applyTheme();
