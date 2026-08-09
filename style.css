@@ -379,7 +379,7 @@ button {
 
 #startLight {
   background: #ffffff;
-  color: #212121;
+  padding: 0.5rem;
 }
 
 #startDark {
