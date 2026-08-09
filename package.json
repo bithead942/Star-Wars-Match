@@ -10,8 +10,10 @@
   "build": {
     "appId": "com.example.star-wars-match",
     "productName": "Star Wars Match",
+    "icon": "img/Star Wars Match Icon.png",
     "win": {
-      "target": "portable"
+      "target": "portable",
+      "icon": "img/Star Wars Match Icon.png"
     },
     "files": [
       "index.html",
