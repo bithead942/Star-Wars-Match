@@ -68,7 +68,7 @@ let timerId = null;
 let paused = false;
 let lock = false;
 let audioCtx = null;
-const IDLE_MS = 120000;
+const IDLE_MS = 60000;
 let idleTimeout = null;
 
 function initAudio() {
