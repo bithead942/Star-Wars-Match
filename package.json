@@ -10,10 +10,11 @@
   "build": {
     "appId": "com.example.star-wars-match",
     "productName": "Star Wars Match",
-    "icon": "img/Star Wars Match Icon.png",
+    "icon": "img/Star Wars Match Icon.ico",
     "win": {
       "target": "portable",
-      "icon": "img/Star Wars Match Icon.png"
+      "icon": "img/Star Wars Match Icon.ico",
+      "verifyUpdateCodeSignature": false
     },
     "files": [
       "index.html",
@@ -33,7 +34,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^31.0.0",
-    "electron-builder": "^25.0.0"
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "allowScripts": {
+    "electron@31.7.7": true,
+    "electron-winstaller@5.4.0": true
   }
 }
