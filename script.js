@@ -39,6 +39,23 @@ const LIGHT_IMAGES = [
   'Wicket.jpg'
 ];
 
+const DARK_IMAGES = [
+  'ATST.jpg',
+  'Biker Scout.jpg',
+  'Count Dooku.jpg',
+  'Darth Maul.jpg',
+  'Darth Vader.jpg',
+  'Emperor Palpatine.jpg',
+  'First Order Trooper.jpg',
+  'Krennic.jpg',
+  'Kylo Ren.jpg',
+  'Probe droid.jpg',
+  'Snow Trooper.jpg',
+  'Storm Trooper.jpg',
+  'Tarkin.jpg',
+  'Tie Pilot.jpg'
+];
+
 const settings = { difficulty: 'medium', theme: 'light' };
 let pending = { ...settings };
 
@@ -228,8 +245,10 @@ function resetGame() {
   lock = false;
 
   const count = COUNTS[settings.difficulty];
-  const faceImages = shuffle(LIGHT_IMAGES).slice(0, count / 2);
-  const faceCards = faceImages.map((name) => ({ id: name, src: encodeURI(`img/Light/${name}`) }));
+  const imagePool = settings.theme === 'dark' ? DARK_IMAGES : LIGHT_IMAGES;
+  const folder = settings.theme === 'dark' ? 'Dark' : 'Light';
+  const faceImages = shuffle(imagePool).slice(0, count / 2);
+  const faceCards = faceImages.map((name) => ({ id: name, src: encodeURI(`img/${folder}/${name}`) }));
   const pairs = [...faceCards, ...faceCards];
   deck = shuffle(pairs);
   deck.forEach((item, index) => {
