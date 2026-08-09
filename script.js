@@ -248,7 +248,10 @@ function resetGame() {
   const imagePool = settings.theme === 'dark' ? DARK_IMAGES : LIGHT_IMAGES;
   const folder = settings.theme === 'dark' ? 'Dark' : 'Light';
   const faceImages = shuffle(imagePool).slice(0, count / 2);
-  const faceCards = faceImages.map((name) => ({ id: name, src: encodeURI(`img/${folder}/${name}`) }));
+  const faceCards = faceImages.map((name) => ({
+    id: name,
+    src: new URL(`img/${folder}/${encodeURIComponent(name)}`, window.location.href).href
+  }));
   const pairs = [...faceCards, ...faceCards];
   deck = shuffle(pairs);
   deck.forEach((item, index) => {
