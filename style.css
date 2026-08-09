@@ -68,7 +68,7 @@ html, body {
 }
 
 .title-img {
-  max-height: 200px;
+  height: 200px;
   max-width: 100%;
   object-fit: contain;
   justify-self: center;
