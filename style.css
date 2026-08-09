@@ -371,6 +371,31 @@ button {
 
 .start-card h2 {
   font-size: 2.25rem;
+  text-align: center;
+}
+
+.start-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.settings-mini {
+  background: transparent;
+  border: none;
+  color: var(--settings-icon);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-mini svg {
+  width: 100%;
+  height: 100%;
 }
 
 .start-actions {

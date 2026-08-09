@@ -16,6 +16,7 @@ const exitBtn = document.getElementById('exitBtn');
 const startOverlay = document.getElementById('startOverlay');
 const startLight = document.getElementById('startLight');
 const startDark = document.getElementById('startDark');
+const startSettingsBtn = document.getElementById('startSettingsBtn');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
 const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
@@ -322,6 +323,7 @@ exitBtn.addEventListener('click', () => {
 
 startLight.addEventListener('click', () => startGame('light'));
 startDark.addEventListener('click', () => startGame('dark'));
+startSettingsBtn.addEventListener('click', openSettings);
 
 difficultyGroup.addEventListener('click', (e) => {
   if (e.target.classList.contains('option')) {
