@@ -19,7 +19,7 @@ const startLight = document.getElementById('startLight');
 const startDark = document.getElementById('startDark');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
-const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 4, rows: 3 }, hard: { cols: 5, rows: 3 } };
+const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const THEMES = ['light', 'dark'];
 const LIGHT_IMAGES = [
