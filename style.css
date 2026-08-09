@@ -69,7 +69,7 @@ html, body {
 }
 
 .title-img {
-  max-height: 100px;
+  max-height: 160px;
   max-width: 100%;
   object-fit: contain;
   justify-self: center;
