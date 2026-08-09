@@ -349,10 +349,10 @@ button {
 #resetBtn,
 #closeBtn,
 #exitBtn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 10px;
   border: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -360,6 +360,28 @@ button {
 #exitBtn {
   background: #757575;
   color: #ffffff;
+}
+
+.win-card {
+  min-width: 420px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.win-card h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.win-card p {
+  font-size: 1.25rem;
+  margin: 0.75rem 0;
+}
+
+.win-card button {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.25rem;
 }
 
 #startOverlay {
