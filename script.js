@@ -67,6 +67,8 @@ let timerId = null;
 let paused = false;
 let lock = false;
 let audioCtx = null;
+const IDLE_MS = 180000;
+let idleTimeout = null;
 
 function initAudio() {
   if (!audioCtx) {
@@ -130,6 +132,20 @@ function stopTimer() {
   }
 }
 
+function resetIdle() {
+  clearIdle();
+  idleTimeout = setTimeout(() => {
+    resetGame();
+  }, IDLE_MS);
+}
+
+function clearIdle() {
+  if (idleTimeout) {
+    clearTimeout(idleTimeout);
+    idleTimeout = null;
+  }
+}
+
 function updateStats() {
   timerEl.textContent = formatTime(elapsed);
   roundsEl.textContent = rounds;
@@ -176,6 +192,7 @@ function createCard(item, index) {
 }
 
 function handleCardClick(card) {
+  resetIdle();
   if (lock || card.classList.contains('flipped') || card.classList.contains('hidden')) {
     return;
   }
@@ -222,6 +239,7 @@ function checkMatch() {
 
 function endGame() {
   stopTimer();
+  clearIdle();
   winTime.textContent = formatTime(elapsed);
   winRounds.textContent = rounds;
   winScore.textContent = elapsed + rounds;
@@ -251,6 +269,7 @@ function prepareBoard() {
 function resetGame() {
   winOverlay.classList.add('hidden');
   stopTimer();
+  clearIdle();
   board.innerHTML = '';
   matched = 0;
   rounds = 0;
@@ -268,6 +287,7 @@ function applyTheme() {
 function openSettings() {
   pending = { ...settings };
   paused = true;
+  clearIdle();
   updateSettingsUI();
   settingsOverlay.classList.remove('hidden');
 }
@@ -281,9 +301,11 @@ function closeSettings(save) {
       resetGame();
     } else {
       paused = false;
+      resetIdle();
     }
   } else {
     paused = false;
+    resetIdle();
   }
   applyTheme();
 }
@@ -303,6 +325,7 @@ function startGame(theme) {
   startOverlay.classList.add('hidden');
   prepareBoard();
   startTimer();
+  resetIdle();
 }
 
 settingsBtn.addEventListener('click', openSettings);
