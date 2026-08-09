@@ -229,20 +229,10 @@ function endGame() {
   winOverlay.classList.remove('hidden');
 }
 
-function resetGame() {
-  winOverlay.classList.add('hidden');
-  stopTimer();
-  board.innerHTML = '';
-
+function prepareBoard() {
   const { cols, rows } = LAYOUT[settings.difficulty];
   board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
   board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-
-  matched = 0;
-  rounds = 0;
-  elapsed = 0;
-  flipped = [];
-  lock = false;
 
   const count = COUNTS[settings.difficulty];
   const imagePool = settings.theme === 'dark' ? DARK_IMAGES : LIGHT_IMAGES;
@@ -257,7 +247,17 @@ function resetGame() {
   deck.forEach((item, index) => {
     board.appendChild(createCard(item, index));
   });
+}
 
+function resetGame() {
+  winOverlay.classList.add('hidden');
+  stopTimer();
+  board.innerHTML = '';
+  matched = 0;
+  rounds = 0;
+  elapsed = 0;
+  flipped = [];
+  lock = false;
   startOverlay.classList.remove('hidden');
 }
 
@@ -306,6 +306,7 @@ function startGame(theme) {
   applyTheme();
   updateSettingsUI();
   startOverlay.classList.add('hidden');
+  prepareBoard();
   startTimer();
 }
 
