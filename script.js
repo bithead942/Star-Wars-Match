@@ -19,7 +19,7 @@ const startLight = document.getElementById('startLight');
 const startDark = document.getElementById('startDark');
 
 const COUNTS = { easy: 6, medium: 10, hard: 14 };
-const LAYOUT = { easy: { cols: 4, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
+const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 4, rows: 3 }, hard: { cols: 5, rows: 3 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const THEMES = ['light', 'dark'];
 const LIGHT_IMAGES = [
@@ -250,7 +250,7 @@ function resetGame() {
   const faceImages = shuffle(imagePool).slice(0, count / 2);
   const faceCards = faceImages.map((name) => ({
     id: name,
-    src: new URL(`img/${folder}/${encodeURIComponent(name)}`, window.location.href).href
+    src: `img/${folder}/${encodeURIComponent(name)}`
   }));
   const pairs = [...faceCards, ...faceCards];
   deck = shuffle(pairs);
