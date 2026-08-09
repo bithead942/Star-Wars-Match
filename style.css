@@ -69,7 +69,7 @@ html, body {
 
 .title-img {
   display: block;
-  height: 90px;
+  height: 70px;
   max-width: 100%;
   object-fit: contain;
   justify-self: center;
