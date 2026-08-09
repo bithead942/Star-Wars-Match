@@ -67,7 +67,7 @@ let timerId = null;
 let paused = false;
 let lock = false;
 let audioCtx = null;
-const IDLE_MS = 180000;
+const IDLE_MS = 120000;
 let idleTimeout = null;
 
 function initAudio() {
@@ -134,9 +134,11 @@ function stopTimer() {
 
 function resetIdle() {
   clearIdle();
-  idleTimeout = setTimeout(() => {
-    resetGame();
-  }, IDLE_MS);
+  if (!paused && timerId) {
+    idleTimeout = setTimeout(() => {
+      resetGame();
+    }, IDLE_MS);
+  }
 }
 
 function clearIdle() {
