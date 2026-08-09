@@ -18,7 +18,7 @@ const startDark = document.getElementById('startDark');
 const startSettingsBtn = document.getElementById('startSettingsBtn');
 
 const COUNTS = { easy: 6, medium: 10, hard: 18 };
-const START_SCORES = { easy: 60, medium: 90, hard: 120 };
+const START_SCORES = { easy: 60, medium: 60, hard: 90 };
 const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 6, rows: 3 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const LIGHT_IMAGES = [
