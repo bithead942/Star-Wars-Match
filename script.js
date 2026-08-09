@@ -18,8 +18,8 @@ const startLight = document.getElementById('startLight');
 const startDark = document.getElementById('startDark');
 const startSettingsBtn = document.getElementById('startSettingsBtn');
 
-const COUNTS = { easy: 6, medium: 10, hard: 14 };
-const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 7, rows: 2 } };
+const COUNTS = { easy: 6, medium: 10, hard: 16 };
+const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 6, rows: 3 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const LIGHT_IMAGES = [
   'bo-katan.jpg',
