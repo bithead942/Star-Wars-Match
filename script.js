@@ -19,6 +19,7 @@ const startDark = document.getElementById('startDark');
 const startSettingsBtn = document.getElementById('startSettingsBtn');
 
 const COUNTS = { easy: 6, medium: 10, hard: 18 };
+const START_SCORES = { easy: 60, medium: 90, hard: 120 };
 const LAYOUT = { easy: { cols: 3, rows: 2 }, medium: { cols: 5, rows: 2 }, hard: { cols: 6, rows: 3 } };
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const LIGHT_IMAGES = [
@@ -63,6 +64,7 @@ let flipped = [];
 let matched = 0;
 let rounds = 0;
 let elapsed = 0;
+let startScore = 0;
 let timerId = null;
 let paused = false;
 let lock = false;
@@ -149,9 +151,10 @@ function clearIdle() {
 }
 
 function updateStats() {
+  const score = Math.max(0, startScore - elapsed - rounds);
   timerEl.textContent = formatTime(elapsed);
   roundsEl.textContent = rounds;
-  scoreEl.textContent = elapsed + rounds;
+  scoreEl.textContent = score;
 }
 
 function shuffle(array) {
@@ -242,9 +245,10 @@ function checkMatch() {
 function endGame() {
   stopTimer();
   clearIdle();
+  updateStats();
   winTime.textContent = formatTime(elapsed);
   winRounds.textContent = rounds;
-  winScore.textContent = elapsed + rounds;
+  winScore.textContent = scoreEl.textContent;
   winOverlay.classList.remove('hidden');
 }
 
@@ -252,6 +256,7 @@ function prepareBoard() {
   const { cols, rows } = LAYOUT[settings.difficulty];
   board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
   board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  startScore = START_SCORES[settings.difficulty];
 
   const count = COUNTS[settings.difficulty];
   const imagePool = settings.theme === 'dark' ? DARK_IMAGES : LIGHT_IMAGES;
@@ -273,11 +278,13 @@ function resetGame() {
   stopTimer();
   clearIdle();
   board.innerHTML = '';
+  startScore = 0;
   matched = 0;
   rounds = 0;
   elapsed = 0;
   flipped = [];
   lock = false;
+  updateStats();
   startOverlay.classList.remove('hidden');
 }
 
