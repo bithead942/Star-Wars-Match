@@ -13,6 +13,7 @@ body.light {
   --stat-bg: #f5f5f5;
   --option-active: #1976d2;
   --option-active-text: #ffffff;
+  --card-front: #ffffff;
 }
 
 body.dark {
@@ -23,6 +24,7 @@ body.dark {
   --stat-bg: #1c1c1c;
   --option-active: #64b5f6;
   --option-active-text: #000000;
+  --card-front: #000000;
 }
 
 * {
